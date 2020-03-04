@@ -1,8 +1,7 @@
 let button = document.querySelector("button");
-let thumbnail = document.getElementById("thumbnail");
-let title = document.getElementById('title');
 let ul = document.getElementById("list");
 let section3 = document.querySelector(".section-3");
+let section1 = document.querySelector(".section-1")
 
 const getRandomMeal = () => {
     fetch('https://www.themealdb.com/api/json/v1/1/random.php')
@@ -12,17 +11,35 @@ const getRandomMeal = () => {
 
 const showMeal = ({ meals }) => {
     //   ------   col 1
+
     let mealsObj = meals[0];
-    let thumb = mealsObj.strMealThumb;
-    let mealTitle = mealsObj.strMeal;
 
-    thumbnail.style.background = `no-repeat center/cover url(${thumb})`;
-    title.innerText = mealTitle;
 
-    // --------- col 2
 
+    displayCard(mealsObj)
     displayList(mealsObj)
     displayInstructions(mealsObj)
+}
+
+function displayCard(mealsObj) {
+    let thumb = mealsObj.strMealThumb;
+    let mealTitle = mealsObj.strMeal;
+    let area = mealsObj.strArea;
+    console.log(area)
+
+    section1.innerHTML =
+        `  
+
+    <div id="card">
+        <div class="card__title-container" ">
+          <h1 class="card__title" id='card-title'>${mealTitle}</h1>
+        </div>
+
+      <div class="card__thumbnail" style="background: no-repeat center/cover url('${thumb}')">
+           <div class='area-tag'>${area}</div>
+        </div>
+     </div>
+  `
 }
 
 const displayInstructions = mealsObj => {
