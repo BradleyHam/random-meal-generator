@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Muli:200,300,400,700,900&display=swap');
 
 :root{
---feature: #8A4FFF;
-
---light: #EFFFFA;
+--top: #4B5740;
+--bottom: rgb(226, 225, 196);
+--light: #EBDFB8;
+--feature: #BF512F;
+--text: #212227;
 }
 
 *, *::after, *::before{
@@ -17,41 +19,41 @@ html{
 body{
     font-family: "Muli";
     font-size: 1.8rem;
-    color: rgb(163, 159, 159);
+    color: rgb(54, 54, 54);
     font-weight: 300;
+    color: var(--text);
 }
 
 .container{
     height: 100vh;
-    background: white;
 }
 
 .top{
     height: 25vh;
-    color: white;
-    background:#59656F;
+    background:var(--top);
     display: flex;
     justify-content:center;
     align-items:center;
 }
 .top h1{
-    text-shadow: 0 0 10px rgb(0, 0, 0, .2)
-}
-h1:first-child{
-    font-weight: 200;
     display: inline;
+    color: white;
+}
+.top h1:first-child{
+    font-weight: 200;
+
     margin-right: -10px;
 }
-h1:nth-last-of-type(1){
+.top h1:nth-child(2){
     font-weight: 900;
-    display: inline;
+   
 }
 
 button{
     display: block;
     padding: 1rem 3rem;
     border: none;
-    background: #E65F5C;
+    background: var(--feature);
     color: white;
     font-weight: 600;
     font-size: 1.6rem;
@@ -63,58 +65,51 @@ button{
 }
 .bottom{
     display:flex;
-    justify-content: center;
     align-items: start;
     min-height: 75vh;
-    background: #F7EBEC;  
-}
-.thumbnail{
-  
-    height: 350px;
-    width: 350px;
+    background: var(--light);  
+ 
+   
 }
 
 .sect{
-    height: 90%;
     display:flex;
     flex-flow: column;
     align-items: flex-start;
     justify-content: flex-start;
-    overflow: scroll;
-    padding: 0;
     line-height: 1.5;
     padding: 4rem;
+    min-height: 75vh;
+    height: 100%;   
+   
 
 }
 .section-1{
     flex: 4;
+   
 
 }
 .section-2{
-    flex: 2
+    flex: 4;
+
 }
 .section-3{
     flex: 5;
   
-}
-
-
-
-.sect:not(:last-child){
+  
    
 }
-
-.title{
-    padding-top:0;
-    font-weight: 900;
-    color: rgb(60, 68, 75);
+.section-3 p{
+    opacity: .7;
 }
 .sect h1{
-   color: rgb(60, 68, 75);
-   font-size: 2rem;
+   color: var(--text);
+   font-size: 2.2rem;
+   font-weight: 900;
 }
 .ingredients{
     list-style-type: none;
+    width: 100%;
 }
 
 @media(max-width: 800px){
@@ -125,7 +120,7 @@ button{
     .bottom{
         flex-flow: column;
         /* min-height: 200vh; */
-        text-align: center;
+        text-align: left;
     }
     .sect:not(:last-child){
         overflow: initial;
@@ -140,6 +135,7 @@ button{
 
     .sect h1{
         font-size: 2rem;
+        text-align: center;
     }
 
     li{
@@ -156,13 +152,28 @@ button{
     display:flex;
     flex-flow: column;
     justify-content: space-between;
-  
+    animation: fadeIn 1s;  
+}
+.section-3-container{
+    animation: fadeIn 1s ;
     
 }
 
-#card-title{
-   
+ul li, ul h1{
+    animation: fadeIn 1s ;
 }
+
+
+
+
+@keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+
+
+
 .card__thumbnail{
   
     border-radius: 0 0 10px 10px;
@@ -177,15 +188,35 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
+    background: var(--top);
+    color: white;
+    border-radius: 10px 10px 0 0;
+}
+.card__title-container h1{
+  color: white;
 }
 .area-tag{
     position: absolute;
     top: 0;
     left: 0;
-    background: #E65F5C;
+    background: var(--feature);
     padding: 1.3rem 4rem;
     color: white;
     font-weight: bold;
    
     letter-spacing: 1px
+}
+
+li{
+    width: 100%;
+    display:flex;
+    font-weight: bold;
+
+
+}
+
+.section-2 span{
+ font-weight: 200;
+ opacity: .6;
+ padding-left: .4rem;
 }
